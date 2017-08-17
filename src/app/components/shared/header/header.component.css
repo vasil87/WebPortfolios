@@ -1,0 +1,13 @@
+.header__logo {
+    width: 250px;
+}
+
+.header {
+    background-color: cyan;
+}
+
+.header__auth {
+    float: right;
+    margin: 31px 5px;
+    background-color: #efaf1e;
+}
