@@ -1,0 +1,33 @@
+.main {
+    text-align: center;
+    display: inline-block;
+}
+
+.flex-container {
+    padding-bottom: 20px;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.flex-item {
+    background-color: #FFF;
+    width: 200px;
+    height: 318px;
+    padding: 0px;
+    margin: 16px 25px;
+    text-align: center;
+}
+
+.portrait-photo {
+    width: 100%;
+}
+
+.name {
+    font-style: bold;
+}
+
+.age {
+    font-style: italic;
+}
