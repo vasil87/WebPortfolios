@@ -6,6 +6,7 @@
             <div class="name"><strong>{{portfolio.firstName}} {{portfolio.lastName}}</strong></div>
             <div class="age">{{portfolio.age}} years old</div>
             <div>{{portfolio.profession}}</div>
+            <a class="view-details" md-button [routerLink]="['/portfolios/portfolio-detail', portfolio.id]">View details</a>
         </li>
     </ul>
 </main>

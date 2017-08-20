@@ -14,7 +14,7 @@
 .flex-item {
     background-color: #FFF;
     width: 200px;
-    height: 318px;
+    height: 366px;
     padding: 0px;
     margin: 16px 25px;
     text-align: center;
@@ -30,4 +30,9 @@
 
 .age {
     font-style: italic;
+}
+
+.view-details{
+    background-color: #efaf1e;
+    margin-top: 10px;
 }

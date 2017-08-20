@@ -1,5 +1,6 @@
 import { PortfolioService } from './../shared/portfolio.service';
 import { Component, OnInit } from '@angular/core';
+import { Portfolio} from '../shared/portfolio';
 
 
 @Component({
@@ -9,12 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PortfolioListComponent implements OnInit {
 
-  portfolios;
+  portfolios: Portfolio[];
 
   constructor(private portfolioService: PortfolioService) { }
 
-  ngOnInit() {
-    this.portfolios = this.portfolioService.getAll();
+  getPortfolios(): void {
+    this.portfolioService.getAll().then(portfolios => this.portfolios = portfolios);
+  }
+
+  ngOnInit(): void {
+    this.getPortfolios();
   }
 
 }
