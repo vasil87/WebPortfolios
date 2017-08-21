@@ -20,6 +20,16 @@
     text-align: center;
 }
 
+.search-form {
+    display: inline-block;
+    margin: 15px;
+}
+
+.select {
+    display: inline-block;
+    margin: 25px;
+}
+
 .portrait-photo {
     width: 100%;
 }
@@ -32,7 +42,7 @@
     font-style: italic;
 }
 
-.view-details{
+.view-details {
     background-color: #efaf1e;
     margin-top: 10px;
 }
