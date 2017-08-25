@@ -1,4 +1,30 @@
-<p>{{portfolio.firstName}}</p>
-<p>{{portfolio.lastName}}</p>
-<p>{{portfolio.age}}</p>
-<p>{{portfolio.profession}}</p>
+<main>
+    <header class="header flex-container">
+        <img [src]="portfolio.imgUrl" class="portrait-photo">
+        <div class="personal-info">
+            <h2 class="name">{{portfolio.firstName}} {{portfolio.lastName}}</h2>
+            <p class="age">{{portfolio.age}} years old</p>
+            <p class="profession">{{portfolio.profession}}</p>
+        </div>
+        <div class="rating">Rating {{portfolio.rating}}</div>
+    </header>
+    <main>
+        <div class="interests">
+            <h3>Interests:</h3>
+            <div class="interest" *ngFor="let interest of portfolio.interests"> {{interest}}</div>
+        </div>
+        <div class="projects">
+            <h3>Projects:</h3>
+            <div class="project" *ngFor="let project of portfolio.projects"> {{project}}</div>
+        </div>
+        <div class="languages">
+            <h3>Languages:</h3>
+            <div class="language" *ngFor="let language of portfolio.languages"> {{language}}</div>
+        </div>
+        <div class="hobbies">
+            <h3>Hobbies:</h3>
+            <div class="hobby" *ngFor="let hobby of portfolio.hobbies"> {{hobby}}</div>
+        </div>
+    </main>
+    <a class="contact-user" md-button [routerLink]="">Contact {{portfolio.firstName}} {{portfolio.lastName}}</a>
+</main>
