@@ -11,12 +11,9 @@
 .portrait-photo {
     width: 200px;
     height: 256px;
-    /*display: block;
-    float: left;*/
 }
 
 .personal-info {
-    /*float: left;*/
     padding: 25px;
     text-align: center;
 }

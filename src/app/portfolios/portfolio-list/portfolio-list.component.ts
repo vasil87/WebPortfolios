@@ -12,7 +12,7 @@ export class PortfolioListComponent implements OnInit {
 
   portfolios: Portfolio[];
   filteredPortfolios: Portfolio[];
-  sortProperties: string[] = ['age', 'first name', 'working experience'];
+  sortProperties: string[] = ['age', 'rating', 'workingExperience'];
   sort = 'age';
   order = 'ascending';
 
@@ -28,12 +28,15 @@ export class PortfolioListComponent implements OnInit {
   ngOnInit(): void {
     this.getPortfolios();
   }
-  searchPortfolio(event: any): void {
+
+  searchPortfolio(event: any) {
+    console.log('filteredPortfolio length is', this.filteredPortfolios.length);
     this.filteredPortfolios = [];
     const query = event.target.value;
     this.filteredPortfolios = this.portfolios.filter((portfolio) => {
       return portfolio.profession.toLowerCase().indexOf(query.toLowerCase()) > -1;
     });
+    return this.filteredPortfolios;
   }
 
 }

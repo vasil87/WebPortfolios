@@ -3,7 +3,7 @@ import 'rxjs/add/operator/switchMap';
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
-import {Portfolio } from '../shared/portfolio';
+import { Portfolio } from '../shared/portfolio';
 
 @Component({
   selector: 'app-portfolio-detail',
