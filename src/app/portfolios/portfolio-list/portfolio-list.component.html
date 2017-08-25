@@ -14,25 +14,21 @@
             {{ property }}
         </md-option>
     </md-select>
-    <md-select class="toobar-item" [(ngModel)]="order " name="order " placeholder="Sort by ">
+    <md-select class="toobar-item" [(ngModel)]="order " name="order " placeholder="Sort order ">
         <md-option value="ascending ">Ascending</md-option>
         <md-option value="descending ">Descending</md-option>
     </md-select>
-    <md-select class="toobar-item" [(ngModel)]="sort " name="sort ">
+    <md-select class="toobar-item" [(ngModel)]="sort " name="sort " placeholder="Sort by age">
         <!--<option *ngFor="let property of sortsProperty " [attr.value]="property ">{{property}}</option>-->
         <md-option value="age ">Age</md-option>
         <md-option value="first name ">First name</md-option>
         <md-option value="working experience ">Working exp</md-option>
     </md-select>
-    <md-select class="toobar-item" [(ngModel)]="order " name="order ">
-        <md-option value="ascending ">Ascending</md-option>
-        <md-option value="descending ">Descending</md-option>
-    </md-select>
 </div>
 <div class="main-content">
     <md-grid-list md-line cols="4 " rowHeight="200px ">
         <md-grid-tile *ngFor="let portfolio of (filteredPortfolios | sort: [sort, order]) ">
-            <img [src]="portfolio.imgUrl ">
+            <img [src]="portfolio.imgUrl" class="grid-img">
             <md-grid-tile-footer layout="row " layout-align="space-between center ">
                 <h3 md-line>{{portfolio.firstName}} {{portfolio.lastName}}</h3>
                 <span md-line>{{portfolio.age}} years old</span>

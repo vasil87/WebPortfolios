@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdButtonModule, MdCheckboxModule, MdToolbarModule, MdIconModule, MdSidenavModule  } from '@angular/material';
+import { MdButtonModule, MdCheckboxModule, MdToolbarModule, MdIconModule, MdSidenavModule, MdCardModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
 
 import { HeaderComponent } from './header/header.component';
@@ -17,12 +17,14 @@ import { ContactComponent } from './contact/contact.component';
         RouterModule,
          MdToolbarModule,
           MdIconModule ,
-          MdSidenavModule
+          MdSidenavModule,
+          MdCardModule
     ],
     exports: [
         HeaderComponent,
         FooterComponent,
-        AsideComponent
+        AsideComponent,
+        ContactComponent
         ],
     declarations: [
         HeaderComponent,
