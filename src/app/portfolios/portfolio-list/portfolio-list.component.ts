@@ -13,7 +13,7 @@ export class PortfolioListComponent implements OnInit {
   portfolios: Portfolio[];
   filteredPortfolios: Portfolio[];
   sortProperties: string[] = ['age', 'first name', 'working experience'];
-  sort = 'age';
+  sort = 'first name';
   order = 'ascending';
 
   constructor(private portfolioService: PortfolioService) { }

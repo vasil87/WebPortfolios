@@ -2,9 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdSelectModule } from '@angular/material';
-import { MdButtonModule, MdCheckboxModule } from '@angular/material';
-import { MdInputModule } from '@angular/material';
+import {  MdSelectModule , MdButtonModule, MdCheckboxModule, MdInputModule, MdGridListModule,MdIconModule} from '@angular/material';
 import { PortfoliosRoutesModule } from './portfolios-routing.module';
 
 import { PortfoliosComponent } from './portfolios.component';
@@ -24,6 +22,8 @@ import { PortfolioService } from './shared/portfolio.service';
     [MdButtonModule, MdCheckboxModule],
     MdInputModule,
     MdSelectModule,
+    MdGridListModule,
+    MdIconModule,
     FormsModule
   ],
   declarations: [

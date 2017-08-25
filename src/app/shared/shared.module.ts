@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdButtonModule, MdCheckboxModule } from '@angular/material';
+import { MdButtonModule, MdCheckboxModule, MdToolbarModule, MdIconModule, MdSidenavModule  } from '@angular/material';
 import { RouterModule } from '@angular/router';
 
 import { HeaderComponent } from './header/header.component';
@@ -15,6 +15,9 @@ import { ContactComponent } from './contact/contact.component';
         BrowserAnimationsModule,
         [MdButtonModule, MdCheckboxModule],
         RouterModule,
+         MdToolbarModule,
+          MdIconModule ,
+          MdSidenavModule
     ],
     exports: [
         HeaderComponent,

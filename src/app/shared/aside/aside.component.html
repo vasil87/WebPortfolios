@@ -1,13 +1,28 @@
-<aside class="sidebar">
-    <ul>
-        <li class="all-portfolios">
-            <h3>List all portfolios</h3>
-        </li>
-        <li class="top5">
-            <h3>Top 5</h3>
-        </li>
-        <li class="why-portfoos">
-            <h3>Why Portfoos</h3>
-        </li>
-    </ul>
-</aside>
+<md-sidenav-container class="aside-container">
+    <button md-raised-button (click)="aside.open()" class='left-align-item margin-2' color="primary">
+        <md-icon color="accent">map</md-icon>Go To
+        </button>
+    <ng-content></ng-content>
+    <md-sidenav #aside [mode]="'open'" class="aside">
+        <md-list layout="column">
+            <md-divider></md-divider>
+            <md-list-item>
+                <a class="max-width" md-raised-button color="primary">List all portfolios</a>
+            </md-list-item>
+            <md-divider></md-divider>
+            <md-list-item>
+                <a class="max-width" md-raised-button color="primary">List all portfolios</a>
+            </md-list-item>
+            <md-divider></md-divider>
+            <md-list-item>
+                <a class="max-width" md-raised-button color="primary">Why Portfoos</a>
+            </md-list-item>
+            <md-divider></md-divider>
+            <md-list-item>
+                <button md-icon-button class="max-width" (click)="aside.close()" color="accent">
+                  <md-icon>close</md-icon>Close
+                </button>
+            </md-list-item>
+        </md-list>
+    </md-sidenav>
+</md-sidenav-container>

@@ -1,13 +1,11 @@
 .header__logo {
-    width: 250px;
+    width: 220px;
 }
 
-.header {
-    background-color: cyan;
+.spacer {
+    flex: 1 1 auto;
 }
 
-.header__auth {
-    float: right;
-    margin: 31px 5px;
-    background-color: #efaf1e;
+.auth-button {
+    margin-left: 10px;
 }
