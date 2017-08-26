@@ -1,7 +1,5 @@
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
-
-import { PortfoliosComponent } from './portfolios.component';
 import { PortfolioDetailComponent } from './portfolio-detail/portfolio-detail.component';
 import { PortfolioListComponent } from './portfolio-list/portfolio-list.component';
 
