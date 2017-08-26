@@ -2,6 +2,7 @@ import { AuthenthicationService } from './../../core/providers/authentication/au
 import { CoreModule } from './../../core/core.module';
 import { UserLoginDetailsModel } from './../../models/user-login-model';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   templateUrl: './login.component.html',
@@ -11,12 +12,13 @@ export class LoginComponent {
   public user = new UserLoginDetailsModel('', '');
   public errorMsg = '';
 
-  constructor(private authSv: AuthenthicationService) { }
+  constructor(private authSv: AuthenthicationService, private router: Router) { }
 
   login() {
-    if (!this.authSv.login(this.user)) {
-      this.errorMsg = 'Failed to login! try again ...';
-    }
+    this.authSv.login(this.user)
+      .then(() => {
+        this.router.navigate(['./portfolios/all']);
+      });
   }
 
 }

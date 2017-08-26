@@ -5,19 +5,16 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 
 @Injectable()
-export class FirebaseService implements OnInit {
+export class FirebaseService {
 
-    user: Observable<firebase.User>;
+    public user: any;
 
     constructor(private afAuth: AngularFireAuth) {
-    }
-
-    ngOnInit(): void {
+        // this.user = this.afAuth.authState.subscribe(x => console.log(x));
         this.user = this.afAuth.authState;
-
     }
     public signIn(email: string, password: string) {
-        this.afAuth.auth.createUserWithEmailAndPassword(email, password)
+        return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
             .catch(function (error: any) {
                 // Handle Errors here.
                 const errorCode = error.code;
@@ -30,9 +27,16 @@ export class FirebaseService implements OnInit {
                 console.log(error);
             });
     }
-    public login(email: string, password: string) {
-        this.afAuth.auth.signInWithEmailAndPassword(email, password)
-            .catch(function (error : any) {
+    public login(email: string, password: string, shouldRemember: boolean) {
+        let persistence = firebase.auth.Auth.Persistence.SESSION;
+        if (!shouldRemember) {
+            persistence = firebase.auth.Auth.Persistence.NONE;
+        }
+        return this.afAuth.auth.setPersistence(persistence)
+            .then(() => {
+                return this.afAuth.auth.signInWithEmailAndPassword(email, password);
+            })
+            .catch(function (error: any) {
                 // Handle Errors here.
                 const errorCode = error.code;
                 const errorMessage = error.message;
@@ -45,6 +49,6 @@ export class FirebaseService implements OnInit {
             });
     }
     public logout() {
-        this.afAuth.auth.signOut();
+        return this.afAuth.auth.signOut();
     }
 }

@@ -1,6 +1,3 @@
-import { AngularFireAuth } from 'angularfire2/auth';
-import { FirebaseService } from './../core/providers/firebase/firebase.service';
-import { AuthenthicationService } from './../core/providers/authentication/authenthication.service';
 import { CoreModule } from './../core/core.module';
 import { SingInComponent } from './sing-in/sing-in.component';
 import { LoginComponent } from './login/login.component';
@@ -25,6 +22,6 @@ import { FormsModule } from '@angular/forms';
     MdSlideToggleModule,
     CoreModule
   ],
-  providers: [AuthenthicationService, FirebaseService, AngularFireAuth]
+  providers: []
 })
 export class AuthModule { }

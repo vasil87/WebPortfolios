@@ -1,22 +1,25 @@
 import { UserLoginDetailsModel } from './../../../models/user-login-model';
 import { FirebaseService } from './../firebase/firebase.service';
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 
 @Injectable()
 export class AuthenthicationService {
 
-    constructor(private userService: FirebaseService) { }
+    public currentUser;
+    constructor(private userService: FirebaseService) {
+        this.currentUser = this.userService.user;
+    }
 
     login(inputUser: UserLoginDetailsModel) {
-        this.userService.login(inputUser.Email, inputUser.Password);
+        return this.userService.login(inputUser.email, inputUser.password,inputUser.shouldRemember);
     }
 
     logout() {
-        this.userService.logout();
+        return this.userService.logout();
     }
 
     signIn(inputUser: UserLoginDetailsModel) {
-        this.userService.signIn(inputUser.Email, inputUser.Password);
+        return this.userService.signIn(inputUser.email, inputUser.password);
     }
 
 

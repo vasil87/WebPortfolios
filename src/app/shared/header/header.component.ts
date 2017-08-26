@@ -1,3 +1,4 @@
+import { AuthenthicationService } from './../../core/providers/authentication/authenthication.service';
 
 import { Component, OnInit } from '@angular/core';
 
@@ -8,9 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  isUserLogedIn = false;
+  curentUserEmail = '';
+  constructor(private auth: AuthenthicationService) {
+  }
 
+  SignOut() {
+    this.auth.logout();
+  }
   ngOnInit() {
+    this.auth.currentUser.subscribe(x => {
+      console.log(x);
+      if (x) {
+        this.isUserLogedIn = true;
+        this.curentUserEmail = x.email;
+      } else {
+        this.isUserLogedIn = false;
+        this.curentUserEmail = '';
+      }
+    });
+
   }
 
 }

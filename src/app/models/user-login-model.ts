@@ -1,9 +1,12 @@
 export class UserLoginDetailsModel {
 
-    constructor(Email: string, Password: string) {
-        this.Email = Email;
-        this.Password = Password;
+    constructor(email: string, password: string, shouldRemember: boolean = true) {
+        this.email = email;
+        this.password = password;
+        this.shouldRemember = shouldRemember;
     }
-    public Email: string;
-    public Password: string;
+    public email: string;
+    public password: string;
+
+    public shouldRemember: boolean;
 }

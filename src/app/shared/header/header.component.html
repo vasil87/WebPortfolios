@@ -3,6 +3,8 @@
         <img class="header__logo" src="../../../../assets/images/Logo-portfoos.png" alt="company-logo">
     </a>
     <span class="spacer"></span>
-    <a md-raised-button routerLink="/auth/signIn" color="accent" class="auth-button">Sign up</a>
-    <a md-raised-button routerLink="/auth/login" color="accent" class="auth-button">Log in</a>
+    <span class="text" *ngIf="isUserLogedIn">{{curentUserEmail}}</span>
+    <a md-raised-button routerLink="/auth/signIn" color="accent" class="auth-button" *ngIf="!isUserLogedIn">Sign up</a>
+    <a md-raised-button routerLink="/auth/login" color="accent" class="auth-button" *ngIf="!isUserLogedIn">Log in</a>
+    <a md-raised-button (click)="SignOut()" color="accent" class="auth-button" *ngIf="isUserLogedIn">Sign Out</a>
 </md-toolbar>

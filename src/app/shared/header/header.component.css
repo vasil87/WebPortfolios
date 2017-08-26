@@ -6,6 +6,11 @@
     flex: 1 1 auto;
 }
 
+.text {
+    font: Roboto, sanf-serif;
+    font-size: 16px;
+}
+
 .auth-button {
     margin-left: 10px;
 }

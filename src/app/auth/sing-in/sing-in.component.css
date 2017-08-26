@@ -4,6 +4,14 @@
     padding: 10px;
 }
 
+.text {
+    font: Roboto, sans-serif;
+    font-size: 25px;
+    color: purple;
+    text-align: center;
+    margin-top: -5%;
+}
+
 .max-width {
     width: 80%;
 }

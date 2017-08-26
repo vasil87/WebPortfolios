@@ -2,6 +2,14 @@
     background-color: gray;
 }
 
+.aside-container {
+    height: 600px;
+}
+
+.main-content {
+    height: 100%;
+}
+
 .left-align-item {
     float: left;
 }

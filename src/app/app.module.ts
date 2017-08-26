@@ -17,7 +17,7 @@ import { AppComponent } from './app.component';
     AuthModule,
     BrowserModule,
     SharedModule,
-    CoreModule,
+    CoreModule.forRoot(),
     AppRoutingModule,
   ],
   providers: [],

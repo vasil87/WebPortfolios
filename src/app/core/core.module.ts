@@ -26,7 +26,7 @@ export class CoreModule {
     }
  }
 
- static forRoot(config): ModuleWithProviders {
+ static forRoot(): ModuleWithProviders {
     return {
       ngModule: CoreModule,
       providers: [FirebaseService, AuthenthicationService, AngularFireAuth]
