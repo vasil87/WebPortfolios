@@ -18,9 +18,20 @@
 .cards-container {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .header {
     text-align: center;
+}
+
+.flex-item {
+    width: 250px;
+    margin: 16px 25px;
+}
+
+.portrait-photo {
+    width: 100%;
+    margin: 16px 0;
 }

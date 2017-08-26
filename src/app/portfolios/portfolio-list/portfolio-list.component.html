@@ -26,14 +26,14 @@
     </md-select>
 </div>
 <div class="main-content ">
-    <md-grid-list md-line cols="4 " rowHeight="200px ">
-        <md-grid-tile *ngFor="let portfolio of (filteredPortfolios | sort: [sort, order]) ">
+    <md-grid-list class="flex-container" md-line cols="5" rowHeight="300px">
+        <md-grid-tile class="flex-item" *ngFor="let portfolio of (filteredPortfolios | sort: [sort, order]) ">
             <img [src]="portfolio.imgUrl " class="grid-img ">
             <md-grid-tile-footer layout="row " layout-align="space-between center ">
                 <h3 md-line>{{portfolio.firstName}} {{portfolio.lastName}}</h3>
                 <span md-line>{{portfolio.age}} years old</span>
                 <span md-line> {{portfolio.profession}}</span>
-                <a md-icon-button [routerLink]="[ '/portfolios/portfolio-detail', portfolio.id] ">
+                <a md-icon-button [routerLink]="['/portfolios/portfolio-detail', portfolio.id]">
                     <md-icon>info</md-icon>
                 </a>
             </md-grid-tile-footer>

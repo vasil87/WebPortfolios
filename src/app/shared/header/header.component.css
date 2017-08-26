@@ -1,5 +1,6 @@
 .header__logo {
-    width: 220px;
+    width: 180px;
+    padding-top: 10px;
 }
 
 .spacer {
@@ -8,4 +9,5 @@
 
 .auth-button {
     margin-left: 10px;
+    float: right;
 }
