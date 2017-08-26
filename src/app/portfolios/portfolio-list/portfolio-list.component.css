@@ -24,7 +24,7 @@
 }
 
 .flex-item {
-    background-color: #FFF;
+    background-color: inherit;
     width: 200px;
     height: 366px;
     padding: 0px;
