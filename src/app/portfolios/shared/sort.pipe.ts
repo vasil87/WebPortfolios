@@ -9,10 +9,7 @@ export class SortPipe implements PipeTransform {
   transform(portfolios: Portfolio[], filter: string[]): Portfolio[] {
     const sort: string =  !!filter[0] ?  filter[0] : 'age';
     const order: string =  !!filter[1] ?  filter[1] : 'ascending';
-  console.log('sort:' + sort);
-  console.log(order);
-   console.log(sort=='rating');
-  console.log(order=='ascending');
+
     function compareAge(a, b) {
       return a.age - b.age;
     }
@@ -48,7 +45,6 @@ export class SortPipe implements PipeTransform {
         portfolios.sort(compareWorkingExperience).reverse();
       }
     }
-      console.log(portfolios);
     return portfolios;
   }
 
