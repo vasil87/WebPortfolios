@@ -4,7 +4,7 @@ import { AuthenthicationService } from './../core/providers/authentication/authe
 import { CoreModule } from './../core/core.module';
 import { SingInComponent } from './sing-in/sing-in.component';
 import { LoginComponent } from './login/login.component';
-import { AuthRoutingModule } from './auth.routing';
+import { AuthRoutingModule } from './auth-routing.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MdInputModule, MdSlideToggleModule, MdButtonModule, MdIconModule } from '@angular/material';

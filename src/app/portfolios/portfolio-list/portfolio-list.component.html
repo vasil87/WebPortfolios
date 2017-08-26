@@ -6,29 +6,29 @@
         <md-input-container>
             <input class="search " (keyup)="searchPortfolio($event) " mdInput #message maxlength="42 " placeholder="Search by profession ">
             <md-hint align="start "><em>For example:</em><strong>civil engineer</strong></md-hint>
-            <md-hint align="end ">{{message.value.length}} / 42</md-hint>
+            <!-- <md-hint align="end ">{{message.value.length}} / 42</md-hint> -->
         </md-input-container>
     </form>
-    <md-select class="toobar-item" [(ngModel)]="sort " name="sort " placeholder="Filter by ">
+    <!-- <md-select class="toobar-item" (ngModel)="sort " (ngModelChange)="sort=$event" name="sort ">
         <md-option *ngFor="let property of sortProperties " [value]="property ">
             {{ property }}
         </md-option>
-    </md-select>
-    <md-select class="toobar-item" [(ngModel)]="order " name="order " placeholder="Sort order ">
-        <md-option value="ascending ">Ascending</md-option>
+    </md-select> -->
+    <md-select class="toobar-item" [(ngModel)]="order " name="order ">
+        <md-option value=" ascending ">Ascending</md-option>
         <md-option value="descending ">Descending</md-option>
     </md-select>
-    <select [(ngModel)]="sort" name="sort">
-                <!--<option *ngFor="let property of sortsProperty" [attr.value]="property">{{property}}</option>-->
-                <option value="age">Age</option>
-                <option value="rating">Rating</option>
-                <option value="workingExperience">Working exp</option>
+    <md-select [(ngModel)]="sort " name="sort ">
+        <!--<option *ngFor="let property of sortsProperty " [attr.value]="property ">{{property}}</option>-->
+        <md-option value="age ">Age</md-option>
+        <md-option value="rating ">Rating</md-option>
+        <md-option value="workingExperience ">Working exp</md-option>
     </md-select>
 </div>
-<div class="main-content">
+<div class="main-content ">
     <md-grid-list md-line cols="4 " rowHeight="200px ">
         <md-grid-tile *ngFor="let portfolio of (filteredPortfolios | sort: [sort, order]) ">
-            <img [src]="portfolio.imgUrl" class="grid-img">
+            <img [src]="portfolio.imgUrl " class="grid-img ">
             <md-grid-tile-footer layout="row " layout-align="space-between center ">
                 <h3 md-line>{{portfolio.firstName}} {{portfolio.lastName}}</h3>
                 <span md-line>{{portfolio.age}} years old</span>

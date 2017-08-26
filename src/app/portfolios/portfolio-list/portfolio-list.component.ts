@@ -11,9 +11,9 @@ import { Portfolio } from '../shared/portfolio';
 export class PortfolioListComponent implements OnInit {
 
   portfolios: Portfolio[];
-  filteredPortfolios: Portfolio[];
+  public filteredPortfolios: Portfolio[];
   sortProperties: string[] = ['age', 'rating', 'workingExperience'];
-  sort = 'first name';
+  sort = 'age';
   order = 'ascending';
 
   constructor(private portfolioService: PortfolioService) { }
@@ -30,13 +30,13 @@ export class PortfolioListComponent implements OnInit {
   }
 
   searchPortfolio(event: any) {
-    console.log('filteredPortfolio length is', this.filteredPortfolios.length);
+    // console.log('filteredPortfolio length is', this.filteredPortfolios.length);
     this.filteredPortfolios = [];
     const query = event.target.value;
     this.filteredPortfolios = this.portfolios.filter((portfolio) => {
       return portfolio.profession.toLowerCase().indexOf(query.toLowerCase()) > -1;
     });
-    return this.filteredPortfolios;
+    // return this.filteredPortfolios;
   }
 
 }

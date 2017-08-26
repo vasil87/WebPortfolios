@@ -7,7 +7,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class SortPipe implements PipeTransform {
 
   transform(portfolios: Portfolio[], filter: string[]): Portfolio[] {
-
     const sort = filter[0];
     const order = filter[1];
 
