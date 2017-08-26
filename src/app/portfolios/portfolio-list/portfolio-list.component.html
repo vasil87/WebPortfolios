@@ -18,11 +18,11 @@
         <md-option value="ascending ">Ascending</md-option>
         <md-option value="descending ">Descending</md-option>
     </md-select>
-    <md-select class="toobar-item" [(ngModel)]="sort " name="sort " placeholder="Sort by age">
-        <!--<option *ngFor="let property of sortsProperty " [attr.value]="property ">{{property}}</option>-->
-        <md-option value="age ">Age</md-option>
-        <md-option value="first name ">First name</md-option>
-        <md-option value="working experience ">Working exp</md-option>
+    <select [(ngModel)]="sort" name="sort">
+                <!--<option *ngFor="let property of sortsProperty" [attr.value]="property">{{property}}</option>-->
+                <option value="age">Age</option>
+                <option value="rating">Rating</option>
+                <option value="workingExperience">Working exp</option>
     </md-select>
 </div>
 <div class="main-content">
