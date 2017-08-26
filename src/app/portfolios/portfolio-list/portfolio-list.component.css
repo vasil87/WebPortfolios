@@ -5,18 +5,45 @@
 
 .toolbar {
     display: flex;
-    flex-wrap: nowrap;
-    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     margin-bottom: 10px;
 }
 
-.toobar-item {
-    margin-left: 2%;
-    flex-basis: 20%;
+.toolbar-item {
+    margin: 10px 15px;
 }
 
-.grid-img {
+.flex-container {
+    padding-bottom: 20px;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.flex-item {
+    background-color: #FFF;
+    width: 200px;
+    height: 366px;
+    padding: 0px;
+    margin: 16px 25px;
+    text-align: center;
+}
+
+.portrait-photo {
     width: 100%;
+}
+
+.name {
+    font-style: bold;
+}
+
+.age {
+    font-style: italic;
+}
+
+.view-details {
+    margin-top: 10px;
 }
