@@ -1,5 +1,5 @@
 import { PortfolioService } from './../shared/portfolio.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges, Input,DoCheck } from '@angular/core';
 import { Portfolio } from '../shared/portfolio';
 
 
@@ -8,31 +8,26 @@ import { Portfolio } from '../shared/portfolio';
   templateUrl: './portfolio-list.component.html',
   styleUrls: ['./portfolio-list.component.css']
 })
-export class PortfolioListComponent implements OnInit {
-
+export class PortfolioListComponent {
   portfolios: Portfolio[];
-  public filteredPortfolios: Portfolio[];
-  sortProperties: string[] = ['age', 'rating', 'workingExperience'];
-  sort = 'age';
-  order = 'ascending';
+  filteredPortfolios: Portfolio[];
+  sort = '';
+  order = '';
 
-  constructor(private portfolioService: PortfolioService) { }
+  constructor(private portfolioService: PortfolioService) {
+   this.getPortfolios();
+  }
 
   getPortfolios(): void {
-    this.portfolioService.getAll().then(portfolios => {
-      this.portfolios = portfolios;
-      this.filteredPortfolios = this.portfolios;
-    });
+    this.portfolioService.getAll()
+      .then((portfolios) => {
+        this.portfolios = portfolios;
+        this.filteredPortfolios = this.portfolios;
+      });
   }
 
-  ngOnInit(): void {
-    this.getPortfolios();
-  }
-
-  searchPortfolio(event: any) {
-    // console.log('filteredPortfolio length is', this.filteredPortfolios.length);
+  searchPortfolio(query: string) {
     this.filteredPortfolios = [];
-    const query = event.target.value;
     this.filteredPortfolios = this.portfolios.filter((portfolio) => {
       return portfolio.profession.toLowerCase().indexOf(query.toLowerCase()) > -1;
     });
