@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {  MdSelectModule , MdButtonModule, MdCheckboxModule, MdInputModule, MdGridListModule, MdIconModule} from '@angular/material';
 import { PortfoliosRoutesModule } from './portfolios-routing.module';
 
@@ -17,8 +16,8 @@ import { PortfolioService } from './shared/portfolio.service';
   imports: [
     CommonModule,
     PortfoliosRoutesModule,
-    // BrowserAnimationsModule,
-    [MdButtonModule, MdCheckboxModule],
+    MdButtonModule,
+    MdCheckboxModule,
     MdInputModule,
     MdSelectModule,
     MdGridListModule,
@@ -26,9 +25,9 @@ import { PortfolioService } from './shared/portfolio.service';
     FormsModule
   ],
   declarations: [
+    SortPipe,
     PortfolioListComponent,
     PortfolioDetailComponent,
-    SortPipe,
 ],
   providers: [
     PortfolioService
