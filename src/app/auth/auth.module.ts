@@ -1,4 +1,3 @@
-import { CoreModule } from './../core/core.module';
 import { SingInComponent } from './sing-in/sing-in.component';
 import { LoginComponent } from './login/login.component';
 import { AuthRoutingModule } from './auth-routing.module';
@@ -20,7 +19,6 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     AuthRoutingModule,
     MdSlideToggleModule,
-    CoreModule
   ],
   providers: []
 })

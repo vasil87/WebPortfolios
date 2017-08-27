@@ -1,10 +1,10 @@
+import { PortfolioService } from './../../core/providers/portfolio/portfolio.service';
 import { Observable } from 'rxjs/Observable';
-import { PortfolioService } from './../shared/portfolio.service';
 import 'rxjs/add/operator/switchMap';
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
-import { Portfolio } from '../shared/portfolio';
+import { Portfolio } from '../../models/portfolio-model';
 import { ISubscription } from 'rxjs/Subscription';
 
 @Component({

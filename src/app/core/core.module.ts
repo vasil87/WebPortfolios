@@ -1,3 +1,4 @@
+import { PortfolioService } from './providers/portfolio/portfolio.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { FirebaseService } from './providers/firebase/firebase.service';
 import { AuthenthicationService } from './providers/authentication/authenthication.service';
@@ -29,7 +30,7 @@ export class CoreModule {
  static forRoot(): ModuleWithProviders {
     return {
       ngModule: CoreModule,
-      providers: [FirebaseService, AuthenthicationService, AngularFireAuth]
+      providers: [FirebaseService, AuthenthicationService, AngularFireAuth , PortfolioService]
     };
   }
 }

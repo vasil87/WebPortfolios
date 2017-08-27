@@ -1,9 +1,10 @@
-import { ContactComponent } from './shared/contact/contact.component';
+import { ContactComponent } from './menu/contact/contact.component';
+
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/portfolios', pathMatch: 'full' },
+  { path: '', redirectTo: '/portfolios/all', pathMatch: 'full' },
   { path: 'portfolios', loadChildren: './portfolios/portfolios.module#PortfoliosModule' },
   { path: 'contact', component: ContactComponent},
 ];

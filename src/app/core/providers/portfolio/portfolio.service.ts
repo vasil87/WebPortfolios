@@ -1,4 +1,4 @@
-import { Portfolio } from './portfolio';
+import { Portfolio } from '../../../models/portfolio-model';
 import { Injectable } from '@angular/core';
 
 @Injectable()

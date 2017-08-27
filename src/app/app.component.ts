@@ -7,9 +7,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 })
 export class AppComponent implements OnInit,OnDestroy{
   ngOnDestroy(): void {
-    console.log(4);
   }
   ngOnInit(): void {
-    console.log(3);
   }
 }

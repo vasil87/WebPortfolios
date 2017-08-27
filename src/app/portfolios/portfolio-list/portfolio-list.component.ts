@@ -1,7 +1,7 @@
-import { PortfolioService } from './../shared/portfolio.service';
-import { Component, OnInit, OnChanges, SimpleChanges, Input,DoCheck } from '@angular/core';
-import { Portfolio } from '../shared/portfolio';
-
+import { SortPipe } from './../../shared/pipes/sort.pipe';
+import { PortfolioService } from './../../core/providers/portfolio/portfolio.service';
+import { Component, OnInit, OnChanges, SimpleChanges, Input, DoCheck } from '@angular/core';
+import { Portfolio } from '../../models/portfolio-model';
 
 @Component({
   selector: 'app-portfolio-list',
@@ -15,7 +15,7 @@ export class PortfolioListComponent {
   order = '';
 
   constructor(private portfolioService: PortfolioService) {
-   this.getPortfolios();
+    this.getPortfolios();
   }
 
   getPortfolios(): void {
