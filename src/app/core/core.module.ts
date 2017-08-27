@@ -3,7 +3,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { FirebaseService } from './providers/firebase/firebase.service';
 import { AuthenthicationService } from './providers/authentication/authenthication.service';
 import { NgModule, SkipSelf, Optional, ModuleWithProviders } from '@angular/core';
-import {AngularFireModule} from 'angularfire2';
+import { AngularFireModule } from 'angularfire2';
 
  const firebaseConfig = {
     apiKey: 'AIzaSyC7SqPbVmybvSQw27I4Nw3vk5V4viImrbk',
