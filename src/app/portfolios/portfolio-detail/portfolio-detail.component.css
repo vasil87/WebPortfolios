@@ -5,12 +5,20 @@
 .flex-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: flex-start;
+}
+
+.margin-left-3 {
+    margin-left: 3%;
+}
+
+.margin-left-5 {
+    margin-left: 5%;
 }
 
 .portrait-photo {
-    width: 200px;
-    height: 256px;
+    width: 220px;
+    height: 270px;
 }
 
 .personal-info {
@@ -26,14 +34,15 @@
     margin: 0;
 }
 
-.interests,
-.hobbies,
-.languages,
-.projects {
-    text-align: center;
-}
-
 .contact-user {
     background-color: #efaf1e;
     margin: 20px;
+}
+
+.text {
+    padding-left: 10%;
+}
+
+.tabs {
+    margin-top: 5px;
 }

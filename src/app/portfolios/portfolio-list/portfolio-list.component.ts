@@ -31,7 +31,6 @@ export class PortfolioListComponent {
     this.filteredPortfolios = this.portfolios.filter((portfolio) => {
       return portfolio.profession.toLowerCase().indexOf(query.toLowerCase()) > -1;
     });
-    // return this.filteredPortfolios;
   }
 
 }

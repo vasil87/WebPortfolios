@@ -1,30 +1,45 @@
 <main>
     <header class="header flex-container">
         <img [src]="portfolio.imgUrl" class="portrait-photo">
-        <div class="personal-info">
+        <md-list class="margin-left-3">
+            <md-list-item>
+                <h2>{{portfolio.firstName}} {{portfolio.lastName}}</h2>
+            </md-list-item>
+            <md-list-item>
+                <p>{{portfolio.age}} years old</p>
+            </md-list-item>
+            <md-list-item>
+                <p>{{portfolio.profession}}</p>
+            </md-list-item>
+            <md-list-item>
+                <div>Rating {{portfolio.rating}}</div>
+            </md-list-item>
+        </md-list>
+        <!-- <div class="personal-info">
             <h2 class="name">{{portfolio.firstName}} {{portfolio.lastName}}</h2>
             <p class="age">{{portfolio.age}} years old</p>
             <p class="profession">{{portfolio.profession}}</p>
         </div>
-        <div class="rating">Rating {{portfolio.rating}}</div>
+        <div class="rating">Rating {{portfolio.rating}}</div> -->
     </header>
-    <main>
-        <div class="interests">
-            <h3>Interests:</h3>
-            <div class="interest" *ngFor="let interest of portfolio.interests"> {{interest}}</div>
+    <div class="flex-container">
+        <div>
+            <a class="contact-user" md-raised-button [routerLink]="">Contact {{portfolio.firstName}} {{portfolio.lastName}}</a>
         </div>
-        <div class="projects">
-            <h3>Projects:</h3>
-            <div class="project" *ngFor="let project of portfolio.projects"> {{project}}</div>
-        </div>
-        <div class="languages">
-            <h3>Languages:</h3>
-            <div class="language" *ngFor="let language of portfolio.languages"> {{language}}</div>
-        </div>
-        <div class="hobbies">
-            <h3>Hobbies:</h3>
-            <div class="hobby" *ngFor="let hobby of portfolio.hobbies"> {{hobby}}</div>
-        </div>
-    </main>
-    <a class="contact-user" md-button [routerLink]="">Contact {{portfolio.firstName}} {{portfolio.lastName}}</a>
+        <md-tab-group class="tabs margin-left-5">
+            <md-tab label=" Interests ">
+                <div class="text " *ngFor="let interest of portfolio.interests "> {{interest}}</div>
+            </md-tab>
+            <md-tab label="Projects ">
+                <div class="text " *ngFor="let project of portfolio.projects "> {{project}}</div>
+            </md-tab>
+            <md-tab label="Languages ">
+                <div class="text " *ngFor="let language of portfolio.languages "> {{language}}</div>
+            </md-tab>
+            <md-tab label="Hobbies ">
+                <div class="text " *ngFor="let hobby of portfolio.hobbies "> {{hobby}}</div>
+            </md-tab>
+        </md-tab-group>
+    </div>
+
 </main>
