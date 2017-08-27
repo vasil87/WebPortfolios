@@ -3,28 +3,28 @@
         <img [src]="portfolio.imgUrl" class="portrait-photo">
         <md-list class="margin-left-3">
             <md-list-item>
+                <md-icon color="accent" md-list-icon>person</md-icon>
                 <h2>{{portfolio.firstName}} {{portfolio.lastName}}</h2>
             </md-list-item>
             <md-list-item>
-                <p>{{portfolio.age}} years old</p>
+                {{portfolio.age}} years old
             </md-list-item>
             <md-list-item>
-                <p>{{portfolio.profession}}</p>
+                {{portfolio.profession}}
             </md-list-item>
             <md-list-item>
-                <div>Rating {{portfolio.rating}}</div>
+                {{portfolio.workingExperience}} years working experience
+            </md-list-item>
+            <md-list-item>
+                Rating {{portfolio.rating}}
             </md-list-item>
         </md-list>
-        <!-- <div class="personal-info">
-            <h2 class="name">{{portfolio.firstName}} {{portfolio.lastName}}</h2>
-            <p class="age">{{portfolio.age}} years old</p>
-            <p class="profession">{{portfolio.profession}}</p>
-        </div>
-        <div class="rating">Rating {{portfolio.rating}}</div> -->
     </header>
     <div class="flex-container">
         <div>
-            <a class="contact-user" md-raised-button [routerLink]="">Contact {{portfolio.firstName}} {{portfolio.lastName}}</a>
+            <a class="contact-user" color="primary" md-raised-button [routerLink]="">
+                <md-icon color="accent" md-list-icon>mail</md-icon>
+                Contact {{portfolio.firstName}} {{portfolio.lastName}}</a>
         </div>
         <md-tab-group class="tabs margin-left-5">
             <md-tab label=" Interests ">

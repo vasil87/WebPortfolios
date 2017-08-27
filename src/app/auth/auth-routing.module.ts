@@ -5,11 +5,11 @@ import { NgModule } from '@angular/core';
 
 const routes: Routes = [
   {
-    path:'auth',
-    children:[
+    path: 'auth',
+    children: [
       { path: 'login', component : LoginComponent },
       { path: 'signUp', component: SingInComponent}
-      ] 
+      ]
   }
 ];
 
