@@ -27,11 +27,11 @@ export class PortfolioService {
 
 
     getAll() {
-        return this.database.getCollection('portfolios');
+        return this.database.getCollection('portfolios').then(x => x.map(y => new Portfolio(y)));
     }
 
     getPortfolio(id: number) {
         return this.getAll()
-            .then(portfolios => portfolios.find(portfolio => portfolio.id === id));
+            .then(portfolios => portfolios.find(x => x.id === id));
     }
 }

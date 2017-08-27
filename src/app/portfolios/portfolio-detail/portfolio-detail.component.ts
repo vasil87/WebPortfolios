@@ -1,10 +1,10 @@
+import { Portfolio } from './../../models/portfolio-model';
 import { PortfolioService } from './../../core/providers/portfolio/portfolio.service';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/switchMap';
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
-import { Portfolio } from '../../models/portfolio-model';
 import { ISubscription } from 'rxjs/Subscription';
 
 @Component({
@@ -20,6 +20,8 @@ export class PortfolioDetailComponent implements OnDestroy {
     private portfolioService: PortfolioService,
     private route: ActivatedRoute,
     private location: Location) {
+    this.portfolio = new Portfolio({});
+    console.log(this.portfolio);
     this.routerSubscription = this.route.paramMap
       .switchMap((params: ParamMap) => this.portfolioService.getPortfolio(+params.get('id')))
       .subscribe(portfolio => this.portfolio = portfolio);

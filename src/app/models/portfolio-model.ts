@@ -8,11 +8,52 @@ export class Portfolio {
         this.age = portfolio.age;
         this.profession = portfolio.profession;
         this.rating = portfolio.rating;
-        this.interests = portfolio.interests;
+        if (Array.isArray(portfolio.interests)) {
+            this.interests = portfolio.interests;
+        } else {
+            this.interests = [];
+            if (!!portfolio.interests) {
+                const keys = Object.keys(portfolio.interests);
+                for (const key of keys) {
+                    this.interests.push(portfolio.interests[key]);
+                }
+            }
+
+        }
         this.workingExperience = portfolio.workingExperience;
-        this.languages = portfolio.languages;
-        this.projects = portfolio.projects;
-        this.hobbies = portfolio.hobbies;
+        if (Array.isArray(portfolio.languages)) {
+            this.languages = portfolio.languages;
+        } else {
+            this.languages = [];
+            if (!!portfolio.languages) {
+                const keys = Object.keys(portfolio.languages);
+                for (const key of keys) {
+                    this.languages.push(portfolio.languages[key]);
+                }
+            }
+        }
+        if (Array.isArray(portfolio.projects)) {
+            this.projects = portfolio.projects;
+        } else {
+            this.projects = [];
+            if (!!portfolio.projects) {
+                const keys = Object.keys(portfolio.projects);
+                for (const key of keys) {
+                    this.projects.push(portfolio.projects[key]);
+                }
+            }
+        }
+        if (Array.isArray(portfolio.hobbies)) {
+            this.hobbies = portfolio.hobbies;
+        } else {
+            this.hobbies = [];
+            if (!!portfolio.hobbies) {
+                const keys = Object.keys(portfolio.hobbies);
+                for (const key of keys) {
+                    this.hobbies.push(portfolio.hobbies[key]);
+                }
+            }
+        }
         this.additionalInfo = portfolio.additionalInfo;
     }
     id: number;
