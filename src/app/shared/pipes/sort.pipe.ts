@@ -7,8 +7,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class SortPipe implements PipeTransform {
 
   transform(portfolios: Portfolio[], filter: string[]): Portfolio[] {
-    const sort: string =  !!filter[0] ?  filter[0] : 'age';
-    const order: string =  !!filter[1] ?  filter[1] : 'ascending';
+    if (typeof portfolios === 'undefined') {
+      return null;
+    }
+    const sort: string = !!filter[0] ? filter[0] : 'age';
+    const order: string = !!filter[1] ? filter[1] : 'ascending';
 
     function compareAge(a, b) {
       return a.age - b.age;

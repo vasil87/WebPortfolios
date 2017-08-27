@@ -9,9 +9,28 @@ export class FirebaseService {
 
     public user: any;
 
-    constructor(private afAuth: AngularFireAuth) {
+    constructor(private afAuth: AngularFireAuth, private afDataBase: AngularFireDatabase) {
         // this.user = this.afAuth.authState.subscribe(x => console.log(x));
         this.user = this.afAuth.authState;
+    }
+
+    public subscribeToCollectionChange(collectionName, callbackMethod) {
+        this.afDataBase.database.ref(collectionName).on('value', callbackMethod);
+    }
+    public getCollection(collectionName: string) {
+        return this.afDataBase.database.ref(collectionName).once('value')
+            .then((x) => {
+                return x.exportVal();
+            })
+            .then((x) => {
+                const resultAsArray = [];
+                const keys = Object.keys(x);
+                for (const key of keys) {
+                    resultAsArray.push(x[key]);
+                }
+                console.log(resultAsArray);
+                return resultAsArray;
+            });
     }
     public signIn(email: string, password: string) {
         return this.afAuth.auth.createUserWithEmailAndPassword(email, password)

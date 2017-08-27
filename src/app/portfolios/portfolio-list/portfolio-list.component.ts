@@ -1,6 +1,6 @@
 import { SortPipe } from './../../shared/pipes/sort.pipe';
 import { PortfolioService } from './../../core/providers/portfolio/portfolio.service';
-import { Component, OnInit, OnChanges, SimpleChanges, Input, DoCheck } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges, Input, DoCheck, ChangeDetectorRef, ViewChild, ElementRef } from '@angular/core';
 import { Portfolio } from '../../models/portfolio-model';
 
 @Component({
@@ -9,22 +9,28 @@ import { Portfolio } from '../../models/portfolio-model';
   styleUrls: ['./portfolio-list.component.css']
 })
 export class PortfolioListComponent {
+  @ViewChild('message') message: ElementRef;
   portfolios: Portfolio[];
   filteredPortfolios: Portfolio[];
   sort = '';
   order = '';
 
-  constructor(private portfolioService: PortfolioService) {
-    this.getPortfolios();
-  }
+  constructor(private portfolioService: PortfolioService, private ref: ChangeDetectorRef) {
 
-  getPortfolios(): void {
-    this.portfolioService.getAll()
-      .then((portfolios) => {
-        this.portfolios = portfolios;
-        this.filteredPortfolios = this.portfolios;
+    portfolioService.collectionChange
+      .subscribe(x => {
+        this.portfolios = x;
+        this.searchPortfolio(this.message.nativeElement.value);
       });
   }
+
+  // getPortfolios(): void {
+  //   this.portfolioService.getAll()
+  //     .then((portfolios) => {
+  //       this.portfolios = portfolios;
+  //       this.filteredPortfolios = this.portfolios;
+  //     });
+  // }
 
   searchPortfolio(query: string) {
     this.filteredPortfolios = [];
