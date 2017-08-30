@@ -1,3 +1,4 @@
+import { MdButtonModule, MdInputModule, MdIconModule } from '@angular/material';
 import { MyPortfolioFormRoutesModule } from './my-portfolio-form-routing.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -9,6 +10,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     ReactiveFormsModule,
     MyPortfolioFormRoutesModule,
+    MdInputModule,
+    MdButtonModule,
+    MdIconModule,
   ],
   declarations: [
     MyPortfolioFormComponent
