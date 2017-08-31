@@ -1,6 +1,6 @@
 import { SortPipe } from './../../shared/pipes/sort.pipe';
 import { PortfolioService } from './../../core/providers/portfolio/portfolio.service';
-import { Component, OnInit, OnChanges, SimpleChanges, Input, DoCheck, ChangeDetectorRef, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges, Input, DoCheck, ViewChild, ElementRef } from '@angular/core';
 import { Portfolio } from '../../models/portfolio-model';
 
 @Component({
@@ -15,11 +15,11 @@ export class PortfolioListComponent {
   sort = '';
   order = '';
 
-  constructor(private portfolioService: PortfolioService, private ref: ChangeDetectorRef) {
+  constructor(private portfolioService: PortfolioService) {
 
     portfolioService.collectionChange
-      .subscribe(x => {
-        this.portfolios = x;
+      .subscribe(collection => {
+        this.portfolios = collection;
         this.searchPortfolio(this.message.nativeElement.value);
       });
   }

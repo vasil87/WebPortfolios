@@ -23,7 +23,7 @@ export class PortfolioDetailComponent implements OnDestroy {
     this.portfolio = new Portfolio({});
     console.log(this.portfolio);
     this.routerSubscription = this.route.paramMap
-      .switchMap((params: ParamMap) => this.portfolioService.getPortfolio(+params.get('id')))
+      .switchMap((params: ParamMap) => this.portfolioService.getPortfolio(params.get('email')))
       .subscribe(portfolio => this.portfolio = portfolio);
   }
 

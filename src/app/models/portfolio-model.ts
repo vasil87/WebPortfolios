@@ -1,13 +1,12 @@
 export class Portfolio {
 
     constructor(portfolio: any) {
-        this.id = portfolio.id;
+        this.email = portfolio.email;
         this.imgUrl = portfolio.imgUrl;
         this.firstName = portfolio.firstName;
         this.lastName = portfolio.lastName;
         this.age = portfolio.age;
         this.profession = portfolio.profession;
-        this.rating = portfolio.rating;
         if (Array.isArray(portfolio.interests)) {
             this.interests = portfolio.interests;
         } else {
@@ -56,13 +55,12 @@ export class Portfolio {
         }
         this.additionalInfo = portfolio.additionalInfo;
     }
-    id: number;
+    email: string;
     imgUrl: string;
     firstName: string;
     lastName: string;
     age: number;
     profession: string;
-    rating: number;
     interests: string[];
     workingExperience: number;
     languages: string[];

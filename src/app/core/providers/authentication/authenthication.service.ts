@@ -7,11 +7,17 @@ export class AuthenthicationService {
 
     public currentUser;
     constructor(private userService: FirebaseService) {
-        this.currentUser = this.userService.user;
+        this.userService.user.subscribe(x => {
+            if (x) {
+                this.currentUser = x;
+            } else {
+                this.currentUser = '';
+            }
+        });
     }
 
     login(inputUser: UserLoginDetailsModel) {
-        return this.userService.login(inputUser.email, inputUser.password,inputUser.shouldRemember);
+        return this.userService.login(inputUser.email, inputUser.password, inputUser.shouldRemember);
     }
 
     logout() {
@@ -21,6 +27,5 @@ export class AuthenthicationService {
     signIn(inputUser: UserLoginDetailsModel) {
         return this.userService.signIn(inputUser.email, inputUser.password);
     }
-
 
 }

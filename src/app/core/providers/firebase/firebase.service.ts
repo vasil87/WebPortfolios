@@ -32,6 +32,11 @@ export class FirebaseService {
                 return resultAsArray;
             });
     }
+
+    public addItem(collectionName: string, item: any) {
+        return this.afDataBase.database.ref(collectionName).push(item);
+    }
+
     public signIn(email: string, password: string) {
         return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
             .catch(function (error: any) {

@@ -30,8 +30,12 @@ export class PortfolioService {
         return this.database.getCollection('portfolios').then(x => x.map(y => new Portfolio(y)));
     }
 
-    getPortfolio(id: number) {
+    getPortfolio(email: string) {
         return this.getAll()
-            .then(portfolios => portfolios.find(x => x.id === id));
+            .then(portfolios => portfolios.find(x => x.email === email));
+    }
+
+    addPortfolio(portfolio) {
+       this.database.addItem('portfolios', portfolio);
     }
 }

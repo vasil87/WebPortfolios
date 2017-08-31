@@ -1,22 +1,3 @@
-<!--<form [formGroup]="rForm" (ngSubmit)="addPortfolio(rForm.value)">
-    <div class="form-container">
-        <div class="row columns">
-            <h1>My Reactive Form</h1>
-            <label>Name
-          <input type="text" formControlName="name">
-        </label>
-            <div class="alert" *ngIf="!rForm.controls['name'].valid && rForm.controls['name'].touched">This field is required</div>
-
-            <label>Description
-          <textarea  formControlName="portfolio.lastName"></textarea>
-        </label>
-
-            <input type="submit" class="button expanded" value="Submit Form" [disabled]="!rForm.valid">
-        </div>
-    </div>
-</form>-->
-<!--<p> MY PORTFOLIO FORM</p>-->
-
 <form [formGroup]="rForm" (ngSubmit)="addPortfolio(rForm.value)" class="form">
     <table class="full-width" cellspacing="0">
         <tr>
@@ -64,5 +45,30 @@
         <div class="alert" *ngIf="!rForm.controls['workingExperience'].valid && rForm.controls['workingExperience'].touched">Working experience must be a positive number</div>
 
     </table>
-    <a md-raised-button class="right" type="submit" color="primary" [disabled]="!rForm.valid">Submit form</a>
+    <p>
+        <md-input-container class="full-width">
+            <input mdInput placeholder="interests, sperated by comma" formControlName="interests">
+        </md-input-container>
+    </p>
+    <p>
+        <md-input-container class="full-width">
+            <input mdInput placeholder="projects, sperated by comma" formControlName="projects">
+        </md-input-container>
+    </p>
+    <p>
+        <md-input-container class="full-width">
+            <input mdInput placeholder="languages, sperated by comma" formControlName="languages">
+        </md-input-container>
+    </p>
+    <p>
+        <md-input-container class="full-width">
+            <input mdInput placeholder="hobbies, sperated by comma" formControlName="hobbies">
+        </md-input-container>
+    </p>
+    <p>
+        <md-input-container class="full-width">
+            <textarea mdInput placeholder="Additional information you want to include" formControlName="additionalInfo" rows="3"></textarea>
+        </md-input-container>
+    </p>
+    <button class="right" type="submit" color="primary" [disabled]="!rForm.valid">Submit form</button>
 </form>

@@ -1,3 +1,5 @@
+import { AuthenthicationService } from './../core/providers/authentication/authenthication.service';
+import { PortfolioService } from './../core/providers/portfolio/portfolio.service';
 import { Portfolio } from './../models/portfolio-model';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -11,15 +13,10 @@ export class MyPortfolioFormComponent implements OnInit {
 
   portfolio: Portfolio;
   rForm: FormGroup;
-  firstName: string;
-  lastName: string;
-  imgUrl: string;
-  age: number;
-  profession: string;
-  workingExperience: number;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private portfolioService: PortfolioService, private authService: AuthenthicationService) {
     this.createForm();
+    this.portfolio = new Portfolio({});
   }
 
   createForm() {
@@ -29,13 +26,34 @@ export class MyPortfolioFormComponent implements OnInit {
       'imgUrl': [null, Validators.compose([Validators.required, Validators.pattern('https?://.+')])],
       'age': [null, Validators.compose([Validators.required, Validators.pattern('^([1-9]|[0-6][0-9])$')])],
       'profession': [null, Validators.compose([Validators.required, Validators.minLength(3)])],
-      'workingExperience': [null, Validators.compose([Validators.required, Validators.pattern('^([1-9]|[0-6][0-9])$')])]
+      'workingExperience': [null, Validators.compose([Validators.required, Validators.pattern('^([1-9]|[0-6][0-9])$')])],
+      'interests': [null],
+      'projects': [null],
+      'languages': [null],
+      'hobbies': [null],
+      'additionalInfo': [null]
     });
   }
 
-  addPortfolio(portfolio) {
-    this.firstName = portfolio.firstName;
-    
+  addPortfolio(rForm) {
+    console.log(rForm);
+    // this.authService.currentUser
+    //   .subscribe(currentUser => {
+        this.portfolio.email = this.authService.currentUser.email;
+        this.portfolio.firstName = rForm.firstName;
+        this.portfolio.lastName = rForm.lastName;
+        this.portfolio.imgUrl = rForm.imgUrl;
+        this.portfolio.age = rForm.age;
+        this.portfolio.profession = rForm.profession;
+        this.portfolio.workingExperience = rForm.workingExperience;
+        this.portfolio.interests = rForm.interests.split(',');
+        this.portfolio.projects = rForm.projects.split(',');
+        this.portfolio.languages = rForm.languages.split(',');
+        this.portfolio.hobbies = rForm.hobbies.split(',');
+        this.portfolio.additionalInfo = rForm.additionalInfo;
+
+        this.portfolioService.addPortfolio(this.portfolio);
+      // });
   }
 
   ngOnInit() {
