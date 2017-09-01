@@ -1,3 +1,4 @@
+import { async } from '@angular/core/testing';
 import { SharedModule } from './../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -24,7 +25,7 @@ import { PortfolioDetailComponent } from './portfolio-detail/portfolio-detail.co
     MdGridListModule,
     MdIconModule,
     MdTabsModule,
-    FormsModule
+    FormsModule,
   ],
   declarations: [
     PortfolioListComponent,

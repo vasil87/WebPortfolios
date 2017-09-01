@@ -19,6 +19,6 @@ export class SingInComponent {
     this.authSv.signIn(this.user).
       then(() => {
         this.router.navigate(['./auth/login']);
-      })
+      });
   }
 }

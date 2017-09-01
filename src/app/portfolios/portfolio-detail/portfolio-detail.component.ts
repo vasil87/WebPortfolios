@@ -12,7 +12,8 @@ import { ISubscription } from 'rxjs/Subscription';
   templateUrl: './portfolio-detail.component.html',
   styleUrls: ['./portfolio-detail.component.css']
 })
-export class PortfolioDetailComponent implements OnDestroy {
+export class PortfolioDetailComponent implements OnInit, OnDestroy {
+
   private routerSubscription: ISubscription;
   portfolio: Portfolio;
 
@@ -20,12 +21,14 @@ export class PortfolioDetailComponent implements OnDestroy {
     private portfolioService: PortfolioService,
     private route: ActivatedRoute,
     private location: Location) {
-    this.portfolio = new Portfolio({});
-    console.log(this.portfolio);
-    this.routerSubscription = this.route.paramMap
+    }
+    ngOnInit(): void {
+     this.portfolio = new Portfolio({});
+      this.routerSubscription = this.route.paramMap
       .switchMap((params: ParamMap) => this.portfolioService.getPortfolio(params.get('email')))
       .subscribe(portfolio => this.portfolio = portfolio);
   }
+
 
   ngOnDestroy(): void {
     this.routerSubscription.unsubscribe();

@@ -5,7 +5,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 
 @Injectable()
-export class FirebaseService {
+export class FirebaseService  {
 
     public user: any;
 
@@ -13,7 +13,6 @@ export class FirebaseService {
         // this.user = this.afAuth.authState.subscribe(x => console.log(x));
         this.user = this.afAuth.authState;
     }
-
     public subscribeToCollectionChange(collectionName, callbackMethod) {
         this.afDataBase.database.ref(collectionName).on('value', callbackMethod);
     }

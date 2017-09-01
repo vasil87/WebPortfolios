@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs/Observable';
 import { UserLoginDetailsModel } from './../../../models/user-login-model';
 import { FirebaseService } from './../firebase/firebase.service';
 import { Injectable, OnInit } from '@angular/core';
@@ -7,15 +8,8 @@ export class AuthenthicationService {
 
     public currentUser;
     constructor(private userService: FirebaseService) {
-        this.userService.user.subscribe(x => {
-            if (x) {
-                this.currentUser = x;
-            } else {
-                this.currentUser = '';
-            }
-        });
+        this.currentUser = this.userService.user;
     }
-
     login(inputUser: UserLoginDetailsModel) {
         return this.userService.login(inputUser.email, inputUser.password, inputUser.shouldRemember);
     }

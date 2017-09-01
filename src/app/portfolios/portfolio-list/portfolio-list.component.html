@@ -27,7 +27,7 @@
             <div class="name"><strong>{{portfolio.firstName}} {{portfolio.lastName}}</strong></div>
             <div class="age">{{portfolio.age}} years old</div>
             <div>{{portfolio.profession}}</div>
-            <a md-raised-button [routerLink]="['/portfolios/portfolio-detail', portfolio.id]" color="accent" class="view-details">View details</a>
+            <a md-raised-button [routerLink]="['/portfolios/portfolio-detail', portfolio.email]" color="accent" class="view-details">View details</a>
         </li>
     </ul>
 </div>

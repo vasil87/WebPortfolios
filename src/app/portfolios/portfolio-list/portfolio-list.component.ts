@@ -8,7 +8,7 @@ import { Portfolio } from '../../models/portfolio-model';
   templateUrl: './portfolio-list.component.html',
   styleUrls: ['./portfolio-list.component.css']
 })
-export class PortfolioListComponent {
+export class PortfolioListComponent implements OnInit {
   @ViewChild('message') message: ElementRef;
   portfolios: Portfolio[];
   filteredPortfolios: Portfolio[];
@@ -16,9 +16,11 @@ export class PortfolioListComponent {
   order = '';
 
   constructor(private portfolioService: PortfolioService) {
+  }
 
-    portfolioService.collectionChange
-      .subscribe(collection => {
+  ngOnInit() {
+        this.portfolioService.collectionChange
+        .subscribe(collection => {
         this.portfolios = collection;
         this.searchPortfolio(this.message.nativeElement.value);
       });

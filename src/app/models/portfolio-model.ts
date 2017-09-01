@@ -67,4 +67,5 @@ export class Portfolio {
     projects: string[];
     hobbies: string[];
     additionalInfo: string;
+    rating: number;
 }

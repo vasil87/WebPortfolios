@@ -18,8 +18,14 @@ export class HeaderComponent implements OnInit {
     this.auth.logout();
   }
   ngOnInit() {
-   this.isUserLogedIn = !!this.auth.currentUser;
-   this.curentUserEmail = this.isUserLogedIn ? this.auth.currentUser.email : '';
+    this.auth.currentUser.subscribe(x => {
+      if (!!x) {
+        this.curentUserEmail = x.email;
+        this.isUserLogedIn = true;
+      }else {
+        this.curentUserEmail = '';
+        this.isUserLogedIn = false;
+      }
+    });
   }
-
 }
