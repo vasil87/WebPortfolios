@@ -13,11 +13,10 @@ export class MyPortfolioFormComponent implements OnInit {
 
   portfolio: Portfolio;
   rForm: FormGroup;
+  userEmail: '';
 
   constructor(private fb: FormBuilder, private portfolioService: PortfolioService, private authService: AuthenthicationService) {
-    this.createForm();
-    this.portfolio = new Portfolio({});
-  }
+    this.createForm();}
 
   createForm() {
     this.rForm = this.fb.group({
@@ -46,10 +45,10 @@ export class MyPortfolioFormComponent implements OnInit {
         this.portfolio.age = rForm.age;
         this.portfolio.profession = rForm.profession;
         this.portfolio.workingExperience = rForm.workingExperience;
-        this.portfolio.interests = rForm.interests.split(',');
-        this.portfolio.projects = rForm.projects.split(',');
-        this.portfolio.languages = rForm.languages.split(',');
-        this.portfolio.hobbies = rForm.hobbies.split(',');
+        this.portfolio.interests = rForm.interests ? rForm.interests.split(',') : ',';
+        this.portfolio.projects = rForm.projects ? rForm.projects.split(',') : ',';
+        this.portfolio.languages = rForm.languages ? rForm.languages.split(',') : ',';
+        this.portfolio.hobbies = rForm.hobbies ? rForm.hobbies.split(',') : ',';
         this.portfolio.additionalInfo = rForm.additionalInfo;
 
         this.portfolioService.addPortfolio(this.portfolio);
@@ -57,6 +56,13 @@ export class MyPortfolioFormComponent implements OnInit {
   }
 
   ngOnInit() {
-  }
-
-}
+  //   this.authService.currentUser.subscribe(x => {
+  //     if (!!x) {
+  //       this.userEmail = x.email;
+  //     }else {
+  //       this.userEmail = '';
+  //     }
+  //   });
+  //   this.portfolio = this.portfolioService.getPortfolio(this.userEmail);
+  // }
+}}
