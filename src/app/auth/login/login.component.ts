@@ -17,7 +17,7 @@ export class LoginComponent {
   login() {
     this.authSv.login(this.user)
       .then(() => {
-        this.router.navigate(['./portfolios/all']);
+        this.router.navigate(['./my-portfolio-form']);
       });
   }
 

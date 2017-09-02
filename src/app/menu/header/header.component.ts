@@ -1,6 +1,7 @@
 import { AuthenthicationService } from './../../core/providers/authentication/authenthication.service';
 
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -11,12 +12,16 @@ export class HeaderComponent implements OnInit {
 
   isUserLogedIn = false;
   curentUserEmail = '';
-  constructor(private auth: AuthenthicationService) {
+  constructor(private auth: AuthenthicationService, private router: Router) {
   }
 
   SignOut() {
-    this.auth.logout();
+    this.auth.logout().
+      then(() => {
+        this.router.navigate(['./portfolios/all']);
+      });
   }
+
   ngOnInit() {
     this.auth.currentUser.subscribe(x => {
       if (!!x) {
