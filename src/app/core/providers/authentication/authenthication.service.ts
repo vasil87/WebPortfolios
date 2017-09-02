@@ -7,6 +7,7 @@ import { Injectable, OnInit } from '@angular/core';
 export class AuthenthicationService {
 
     public currentUser;
+    public redirectUrl: string;
     constructor(private userService: FirebaseService) {
         this.currentUser = this.userService.user;
     }

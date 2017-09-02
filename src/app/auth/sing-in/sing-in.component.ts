@@ -16,9 +16,12 @@ export class SingInComponent {
   constructor(private authSv: AuthenthicationService, private router: Router) { }
 
   signIn() {
-    this.authSv.signIn(this.user).
-      then(() => {
-        this.router.navigate(['./auth/login']);
+    this.authSv.signIn(this.user)
+      .then((isOk: boolean) => {
+        if (isOk) {
+          window.alert('You have succesfully registered');
+          this.router.navigate(['./auth/login']);
+        }
       });
   }
 }
