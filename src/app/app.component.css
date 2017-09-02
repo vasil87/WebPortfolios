@@ -1,7 +1,45 @@
-.main-content {
-    height: 600px;
-    margin-left: 20%;
-    margin-right: 20%;
-    margin-top: 0;
-    margin-bottom: 2%;
-}
+    .container {
+        margin-left: 20%;
+        margin-right: 20%;
+        margin-top: 0;
+        margin-bottom: 2%;
+        height: 100%;
+        min-height: 600px;
+    }
+    
+    .message-content {
+        position: absolute;
+        height: 500px;
+        top: 0.5%;
+        right: 0;
+        width: 15%;
+        background-color: #673BB7;
+        color: white;
+        display: block;
+        border-radius: 5px;
+        padding-left: 2%;
+    }
+    
+    .show-messages-button {
+        position: absolute;
+        top: 0.5%;
+        right: 0;
+    }
+    
+    .hide-messages-button {
+        display: block;
+        position: absolute;
+        bottom: 1%;
+        left: 25%;
+    }
+    
+    .messages {
+        height: 90%;
+        overflow-y: scroll;
+    }
+    
+    @media only screen and (max-height: 600px) {
+        .message-content {
+            height: 300px;
+        }
+    }

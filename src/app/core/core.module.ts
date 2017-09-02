@@ -1,3 +1,4 @@
+import { PortfolioDetailsResolver } from './../portfolios/portfolio-detail/portfolio-detail.resolver.service';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { PortfolioService } from './providers/portfolio/portfolio.service';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -5,6 +6,7 @@ import { FirebaseService } from './providers/firebase/firebase.service';
 import { AuthenthicationService } from './providers/authentication/authenthication.service';
 import { NgModule, SkipSelf, Optional, ModuleWithProviders } from '@angular/core';
 import { AngularFireModule } from 'angularfire2';
+import { AuthGuard } from './providers/guards/auth-guard.service';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyC7SqPbVmybvSQw27I4Nw3vk5V4viImrbk',
@@ -31,7 +33,8 @@ export class CoreModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: CoreModule,
-      providers: [FirebaseService, AuthenthicationService, AngularFireAuth, PortfolioService, AngularFireDatabase]
+      providers: [FirebaseService, AuthenthicationService, AngularFireAuth, PortfolioService,
+        AngularFireDatabase, PortfolioDetailsResolver, AuthGuard]
     };
   }
 }

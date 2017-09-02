@@ -16,8 +16,16 @@ export class LoginComponent {
 
   login() {
     this.authSv.login(this.user)
-      .then(() => {
-        this.router.navigate(['./portfolios/all']);
+      .then((isOk: boolean) => {
+        if (isOk) {
+          if (this.authSv.redirectUrl) {
+            const url = this.authSv.redirectUrl;
+            this.authSv.redirectUrl = '';
+            this.router.navigateByUrl(url);
+          } else {
+            this.router.navigate(['./portfolios/all']);
+          }
+        }
       });
   }
 

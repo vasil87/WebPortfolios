@@ -1,0 +1,11 @@
+h1 {
+    position: relative;
+    margin-top: 20%;
+    margin-left: 10%;
+    font-size: 6em;
+    text-align: center;
+    line-height: 0.8em;
+    letter-spacing: -0.05em;
+    color: #FFD741;
+    text-shadow: -2px -2px #673BB7, 2px -2px 0 #673BB7, -2px 2px 0 #673BB7, 2px 2px 0 #673BB7;
+}

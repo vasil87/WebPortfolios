@@ -47,7 +47,7 @@ export class FirebaseService  {
                 } else {
                     alert(errorMessage);
                 }
-                console.log(error);
+                return false;
             });
     }
     public login(email: string, password: string, shouldRemember: boolean) {
@@ -68,7 +68,7 @@ export class FirebaseService  {
                 } else {
                     alert(errorMessage);
                 }
-                console.log(error);
+               return false;
             });
     }
     public logout() {

@@ -26,14 +26,6 @@ export class PortfolioListComponent implements OnInit {
       });
   }
 
-  // getPortfolios(): void {
-  //   this.portfolioService.getAll()
-  //     .then((portfolios) => {
-  //       this.portfolios = portfolios;
-  //       this.filteredPortfolios = this.portfolios;
-  //     });
-  // }
-
   searchPortfolio(query: string) {
     this.filteredPortfolios = [];
     this.filteredPortfolios = this.portfolios.filter((portfolio) => {
