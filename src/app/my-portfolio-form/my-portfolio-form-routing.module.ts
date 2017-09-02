@@ -1,11 +1,11 @@
+import { AuthGuard } from './../core/providers/guards/auth-guard.service';
 import { MyPortfolioFormComponent } from './my-portfolio-form.component';
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { AuthGuard } from '../core/providers/guards/auth-guard.service';
 
 
 const routes: Routes = [
-  { path: '', component: MyPortfolioFormComponent },
+  { path: '', component: MyPortfolioFormComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

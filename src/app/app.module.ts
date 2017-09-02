@@ -1,4 +1,4 @@
-import { PageNotFountComponent } from './page-not-fount/page-not-fount.component';
+import { PageNotFoundComponent } from './page-not-fount/page-not-fount.component';
 import { MenuModule } from './menu/menu.module';
 import { AuthModule } from './auth/auth.module';
 import { CoreModule } from './core/core.module';
@@ -12,7 +12,7 @@ import { MdProgressSpinnerModule, MdButtonModule } from '@angular/material';
 @NgModule({
   declarations: [
     AppComponent,
-    PageNotFountComponent
+    PageNotFoundComponent
   ],
   imports: [
     MdProgressSpinnerModule,
