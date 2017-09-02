@@ -1,7 +1,7 @@
 import { AuthenthicationService } from './../core/providers/authentication/authenthication.service';
 import { PortfolioService } from './../core/providers/portfolio/portfolio.service';
 import { Portfolio } from './../models/portfolio-model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterContentInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -16,7 +16,8 @@ export class MyPortfolioFormComponent implements OnInit {
   userEmail: '';
 
   constructor(private fb: FormBuilder, private portfolioService: PortfolioService, private authService: AuthenthicationService) {
-    this.createForm();}
+    this.createForm();
+  }
 
   createForm() {
     this.rForm = this.fb.group({
@@ -36,9 +37,9 @@ export class MyPortfolioFormComponent implements OnInit {
 
   addPortfolio(rForm) {
     console.log(rForm);
-    // this.authService.currentUser
-    //   .subscribe(currentUser => {
-        this.portfolio.email = this.authService.currentUser.email;
+    this.authService.currentUser
+      .subscribe(currentUser => {
+        this.portfolio.email = currentUser.email;
         this.portfolio.firstName = rForm.firstName;
         this.portfolio.lastName = rForm.lastName;
         this.portfolio.imgUrl = rForm.imgUrl;
@@ -52,17 +53,14 @@ export class MyPortfolioFormComponent implements OnInit {
         this.portfolio.additionalInfo = rForm.additionalInfo;
 
         this.portfolioService.addPortfolio(this.portfolio);
-      // });
+      });
   }
 
   ngOnInit() {
-  //   this.authService.currentUser.subscribe(x => {
-  //     if (!!x) {
-  //       this.userEmail = x.email;
-  //     }else {
-  //       this.userEmail = '';
-  //     }
-  //   });
-  //   this.portfolio = this.portfolioService.getPortfolio(this.userEmail);
-  // }
-}}
+    this.userEmail = this.authService.currentUser.email;
+    // this.portfolio = this.portfolioService.getPortfolio(this.userEmail);
+
+    console.log(this.userEmail);
+
+  }
+}
