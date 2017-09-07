@@ -3,10 +3,7 @@ const path = require('path');
 const express = require('express');
 const app = express();
 
-app.use('/js', express.static(__dirname + './dist'));
-app.use('/css', express.static(__dirname + './dist'));
-app.use('/img', express.static(__dirname + './dist/assets/images'));
-app.use('/ico', express.static(__dirname + './dist/assets/images'));
+app.use(express.static(__dirname + './dist'));
 
 // Start the app by listening on the default
 // Heroku port
