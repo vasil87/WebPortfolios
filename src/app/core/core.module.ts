@@ -1,3 +1,5 @@
+import { MessagesService } from './providers/messages/messages.service';
+import { MyPortFolioResolver } from './../my-portfolio-form/my-portfolio.resolver.service';
 import { PortfolioDetailsResolver } from './../portfolios/portfolio-detail/portfolio-detail.resolver.service';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { PortfolioService } from './providers/portfolio/portfolio.service';
@@ -34,7 +36,8 @@ export class CoreModule {
     return {
       ngModule: CoreModule,
       providers: [FirebaseService, AuthenthicationService, AngularFireAuth, PortfolioService,
-        AngularFireDatabase, PortfolioDetailsResolver, AuthGuard]
+        AngularFireDatabase, PortfolioDetailsResolver, AuthGuard, MyPortFolioResolver
+        , MessagesService]
     };
   }
 }

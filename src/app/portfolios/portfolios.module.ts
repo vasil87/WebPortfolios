@@ -5,15 +5,16 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
   MdSelectModule, MdButtonModule, MdCheckboxModule, MdInputModule,
-  MdGridListModule, MdIconModule, MdTabsModule, MdListModule
+  MdGridListModule, MdIconModule, MdTabsModule, MdListModule, MdRadioModule
 } from '@angular/material';
 import { PortfoliosRoutesModule } from './portfolios-routing.module';
 import { PortfolioListComponent } from './portfolio-list/portfolio-list.component';
 import { PortfolioDetailComponent } from './portfolio-detail/portfolio-detail.component';
-
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   imports: [
+    RouterModule,
     SharedModule,
     CommonModule,
     PortfoliosRoutesModule,
@@ -25,6 +26,7 @@ import { PortfolioDetailComponent } from './portfolio-detail/portfolio-detail.co
     MdGridListModule,
     MdIconModule,
     MdTabsModule,
+    MdRadioModule,
     FormsModule,
   ],
   declarations: [

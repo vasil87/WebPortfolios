@@ -5,7 +5,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 
 @Injectable()
-export class FirebaseService  {
+export class FirebaseService {
 
     public user: any;
 
@@ -14,7 +14,16 @@ export class FirebaseService  {
         this.user = this.afAuth.authState;
     }
     public subscribeToCollectionChange(collectionName, callbackMethod) {
-        this.afDataBase.database.ref(collectionName).on('value', callbackMethod);
+        this.afDataBase.database.ref(collectionName).once('value')
+            .then(x => {
+                if (x.exists()) {
+                    this.afDataBase.database.ref(collectionName).on('value', callbackMethod);
+                } else {
+                    callbackMethod({
+                        exportVal: function () { return {}; },
+                    });
+                }
+            });
     }
     public getCollection(collectionName: string) {
         return this.afDataBase.database.ref(collectionName).once('value')
@@ -25,6 +34,7 @@ export class FirebaseService  {
                 const resultAsArray = [];
                 const keys = Object.keys(x);
                 for (const key of keys) {
+                    x[key].id = key;
                     resultAsArray.push(x[key]);
                 }
                 console.log(resultAsArray);
@@ -33,22 +43,17 @@ export class FirebaseService  {
     }
 
     public addItem(collectionName: string, item: any) {
+        delete item['id'];
         return this.afDataBase.database.ref(collectionName).push(item);
+    }
+    public updateItem(collectionName: string, item: any) {
+        const id = item.id;
+        delete item['id'];
+        return this.afDataBase.database.ref(collectionName + '/' + id).update(item);
     }
 
     public signIn(email: string, password: string) {
-        return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
-            .catch(function (error: any) {
-                // Handle Errors here.
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                if (errorCode === 'auth/weak-password') {
-                    alert('The password is too weak.');
-                } else {
-                    alert(errorMessage);
-                }
-                return false;
-            });
+        return this.afAuth.auth.createUserWithEmailAndPassword(email, password);
     }
     public login(email: string, password: string, shouldRemember: boolean) {
         let persistence = firebase.auth.Auth.Persistence.SESSION;
@@ -58,19 +63,9 @@ export class FirebaseService  {
         return this.afAuth.auth.setPersistence(persistence)
             .then(() => {
                 return this.afAuth.auth.signInWithEmailAndPassword(email, password);
-            })
-            .catch(function (error: any) {
-                // Handle Errors here.
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                if (errorCode === 'auth/wrong-password') {
-                    alert('Wrong password.');
-                } else {
-                    alert(errorMessage);
-                }
-               return false;
             });
     }
+
     public logout() {
         return this.afAuth.auth.signOut();
     }

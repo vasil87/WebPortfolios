@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './page-not-fount.component.html',
   styleUrls: ['./page-not-fount.component.css']
 })
-export class PageNotFountComponent implements OnInit {
+export class PageNotFoundComponent implements OnInit {
 
   constructor() { }
 
