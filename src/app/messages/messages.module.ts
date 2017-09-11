@@ -1,3 +1,4 @@
+import { SharedModule } from './../shared/shared.module';
 import { MdInputModule, MdButtonModule, MdIconModule } from '@angular/material';
 import { MessagesRoutes } from './messages-routing.module';
 import { AddMeesageComponent } from './writeMessage/addMeesage.component';
@@ -6,8 +7,10 @@ import { CommonModule } from '@angular/common';
 import { MessagesComponent } from './myMessages/messages.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
+
 @NgModule({
   imports: [
+    SharedModule,
     ReactiveFormsModule,
     CommonModule,
     MessagesRoutes,
@@ -15,6 +18,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     MdButtonModule,
     MdIconModule,
   ],
-  declarations: [MessagesComponent, AddMeesageComponent]
+  declarations: [
+    MessagesComponent,
+    AddMeesageComponent
+  ]
 })
 export class MessagesModule { }

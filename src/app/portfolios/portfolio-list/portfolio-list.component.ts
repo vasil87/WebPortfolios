@@ -1,35 +1,41 @@
+import { ISubscription } from 'rxjs/Subscription';
 import { SortPipe } from './../../shared/pipes/sort.pipe';
 import { PortfolioService } from './../../core/providers/portfolio/portfolio.service';
-import { Component, OnInit, OnChanges, SimpleChanges, Input, DoCheck, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges, Input, DoCheck, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { Portfolio } from '../../models/portfolio-model';
 
 @Component({
-  selector: 'app-portfolio-list',
   templateUrl: './portfolio-list.component.html',
   styleUrls: ['./portfolio-list.component.css']
 })
-export class PortfolioListComponent implements OnInit {
+export class PortfolioListComponent implements OnInit, OnDestroy {
   @ViewChild('message') message: ElementRef;
   portfolios: Portfolio[];
   filteredPortfolios: Portfolio[];
   sort = '';
   order = '';
-  fontSize: '10px';
+  fontSize: string;
+
+  subscription: ISubscription;
 
   constructor(private portfolioService: PortfolioService) {
   }
 
   ngOnInit() {
-        this.portfolioService.collectionChange
-        .subscribe(collection => {
+    this.subscription = this.portfolioService.collectionChange
+      .subscribe(collection => {
         this.portfolios = collection;
         this.searchPortfolio(this.message.nativeElement.value);
       });
   }
 
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
   searchPortfolio(query: string) {
     this.filteredPortfolios = [];
-    console.log(this.fontSize);
     this.filteredPortfolios = this.portfolios.filter((portfolio) => {
       return portfolio.profession.toLowerCase().indexOf(query.toLowerCase()) > -1;
     });

@@ -29,7 +29,7 @@ export class AddMeesageComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.senderEmail = this.authServ.currentUserEmail;
     this.sub = this.route.params.subscribe(params => {
-      this.receiverEmail = params['email'];
+      this.receiverEmail = atob(params['email']);
       this.message.to = this.receiverEmail;
     });
     this.messageForm = this.fb.group({
@@ -44,9 +44,14 @@ export class AddMeesageComponent implements OnInit, OnDestroy {
     const componenet = this;
     this.message.from = this.senderEmail;
     this.message.text = form.text;
+    if (this.message.from === this.message.to) {
+      componenet.toastr.error('You can`t send messages to yourself');
+      return false;
+    }
     this.messsageService.addMessage(this.message)
       .then(() => {
         componenet.toastr.success('You ve successfully sent message to ' + this.message.to);
+        this.messageForm.reset();
       })
       .catch((err) => {
         componenet.toastr.error('Please try again later');

@@ -1,27 +1,35 @@
+import { ISubscription } from 'rxjs/Subscription';
+import { ModalService } from './../core/modal/modal.service';
 import { AppComponent } from './../app.component';
 import { ActivatedRoute } from '@angular/router';
 import { AuthenthicationService } from './../core/providers/authentication/authenthication.service';
 import { PortfolioService } from './../core/providers/portfolio/portfolio.service';
 import { Portfolio } from './../models/portfolio-model';
-import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { Component, OnInit, ViewContainerRef, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+import { CanComponentDeactivate } from '../core/providers/guards/can-deactivate-guard.service';
 
 @Component({
   templateUrl: './my-portfolio-form.component.html',
   styleUrls: ['./my-portfolio-form.component.css']
 })
-export class MyPortfolioFormComponent implements OnInit {
+export class MyPortfolioFormComponent implements OnInit, CanComponentDeactivate, OnDestroy {
+  private routerSubscription: ISubscription;
 
   toastr;
   isEdit: boolean;
-  routerSubscription: any;
-
   portfolio: Portfolio;
   rForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private portfolioService: PortfolioService,
-    private authService: AuthenthicationService, private route: ActivatedRoute, private appComp: AppComponent) {
+  constructor(
+    private fb: FormBuilder,
+    private portfolioService: PortfolioService,
+    private authService: AuthenthicationService,
+    private route: ActivatedRoute,
+    private appComp: AppComponent,
+    private modalService: ModalService
+  ) {
     this.toastr = appComp.toastr;
   }
 
@@ -83,6 +91,9 @@ export class MyPortfolioFormComponent implements OnInit {
       this.createForm();
     });
   }
+  ngOnDestroy() {
+    this.routerSubscription.unsubscribe();
+  }
 
   private isFormSame(rForm) {
     if (this.portfolio.firstName === rForm.firstName &&
@@ -100,6 +111,16 @@ export class MyPortfolioFormComponent implements OnInit {
     }
 
     return false;
+  }
+
+  canDeactivate() {
+    console.log('i am navigating away');
+    if (!this.isFormSame(this.rForm.value)) {
+      return window.confirm('Discard changes?');
+      // return this.modalService.activate();
+    }
+
+    return true;
   }
 
 }
